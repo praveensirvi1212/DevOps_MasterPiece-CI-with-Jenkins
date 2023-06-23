@@ -820,7 +820,8 @@ def sendSlackNotifcation()
 
 # Final outputs of this Project
 ### Jenkins Output : 
-Sorry, I forgot to change the stage name while build the job 
+Sorry, I forgot to change the stage name while building the job,but don't worry I made changes in the Jenkins file.
+
 ![](https://github.com/praveensirvi1212/DevOps_MasterPiece-CI-with-Jenkins/blob/main/images/jenkins.png)
 
 ### Sonarqube Output: 
