@@ -833,15 +833,15 @@ You can apply your custom quality gate like there should be zero ( bug, Vulnerab
 ![](https://github.com/praveensirvi1212/DevOps_MasterPiece-CI-with-Jenkins/blob/main/images/quality-gate.png)
 
 ### Trivy report in AWS S3 push by jenkins
-![](https://github.com/praveensirvi1212/DevSecOps-project/blob/main/Images/trivy-report-s3.png) 
+![](https://github.com/praveensirvi1212/DevOps_MasterPiece-CI-with-Jenkins/blob/main/images/trivy-report.png) 
 
 
 ### Trivy report 
-![](https://github.com/praveensirvi1212/DevSecOps-project/blob/main/Images/TrivyReprt.png) 
+![](https://github.com/praveensirvi1212/DevOps_MasterPiece-CI-with-Jenkins/blob/main/images/Screenshot%20from%202023-06-23%2023-59-22.png)
 
 
 ### Images in DockerHub pushed by jenkins 
-![](https://github.com/praveensirvi1212/DevSecOps-project/blob/main/Images/dockerhubop.png) 
+![](https://github.com/praveensirvi1212/DevOps_MasterPiece-CI-with-Jenkins/blob/main/images/dockerhub.png)
 
 ### kubernetes output ( deployment and service created by jenkins) 
 ![](https://github.com/praveensirvi1212/DevSecOps-project/blob/main/Images/kubernetesop.png) 
