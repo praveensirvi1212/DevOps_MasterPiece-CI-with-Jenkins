@@ -74,7 +74,7 @@ if the docker build fails when the whole pipeline will become a failure and Jenk
 ## Step: 1 Installation Part 
 
 ### Stage-01: Install JDK and Create a Java Springboot application
-Push all the web application page code files into GitHub
+Push all the web application  code files into GitHub
 
 ![](https://github.com/praveensirvi1212/DevSecOps-project/blob/main/Images/code.png) 
 
@@ -287,7 +287,7 @@ ui = true
 
 
 ### Stage-03: SonarQube Server Configuration
-1. Access the sonarqube ui using the public IP of server and port 9000
+1. Access the sonarqube ui using the public IP of the server and port 9000
 1. default username-password `admin`  and ` admin`
 ##### Project setup
 1.  create a project manually, give some name to project, project key
@@ -312,7 +312,7 @@ ui = true
 1.  in secret leave the blank
 1. click on create
 
-##### Note: if this webhook does not work fine , then recreate the webhook after integrating the soanrqube with jenkins
+##### Note: if this webhook does not work fine, then recreate the webhook after integrating the soanrqube with jenkins
 
 
 
@@ -384,9 +384,9 @@ the policy is created with * means the vault server can read credentials from ev
 
 ## Step: 4 Integrate all the tools into jenkins 
 ### Stage-01: Hashicorp Vault server integration with Jenkins
-1. go to jenkins >  Manage  Jenkins >Manage Credentials > system > Add credentials > Vault App Role Credentials > paste role-id and secret-id token (we create in Vault - approle)  and save and apply.
-1. now to  Manage  Jenkins  >  configure system / system >  search for vault plugin
-1. give the url of vault server
+1. go to Jenkins>  Manage  Jenkins >Manage Credentials > system > Add credentials > Vault App Role Credentials > Paste role-id and secret-id token (we create in Vault - approle)  and save and apply.
+1. now to  Manage  Jenkins  >  configure system/system>  search for vault plugin
+1. give the URL of the vault server
 1. attach the credentials we created
 1. click on Advanced
 1. select k/v engine as 1
@@ -394,17 +394,17 @@ the policy is created with * means the vault server can read credentials from ev
 1. Apply and Save
 
 ### Stage-02: SonarQube server integration with Jenkins
-1.  go to Manage jenkins >Manage Credentials > system > Add credentials > secret text file > paste token we create in sonarqube and save and apply.
-1. now to  Manage  Jenkins  >  configure system / system >  search for SonarQube Server
+1.  go to Manage Jenkins>Manage Credentials > system > Add credentials > secret text file > paste the token we create in sonarqube and save and apply.
+1. now to  Manage  Jenkins  >  configure system/system>  search for SonarQube Server
 1. enable the environment  variables
-1. write the name for sonaqube server
+1. write the name of Sonaqube server
 1. paste the url of SonarQube server
 1. select the credential
 1. Apply and Save
 
 ### Stage-03: Jforg Artifactory integration with Jenkins
-1. go to Manage jenkins >Manage Credentials > system > Add credentials > username and password > write the username and password we created in jforg artifacotry and save and apply.
-1. now to  Manage  Jenkins  >  configure system / system >  search for Jfrog
+1. go to Manage Jenkins>Manage Credentials > system > Add credentials > username and password > write the username and password we created in jforg artifacotry and save and apply.
+1. now to  Manage  Jenkins  >  configure system/system>  search for Jfrog
 1. give instance id as artifactory name
 1. Jfrog Platform url - artifactory url like - http://localhost:8082
 1. click on Advanced
@@ -413,8 +413,8 @@ the policy is created with * means the vault server can read credentials from ev
 1. Default Deployer Credentials – give username and password of artifactory (not admin user)
 1. Apply and save
 ### Stage-04:  AWS S3 integration with Jenkins
-1. for S3 integration we will configure aws cli in pipeline itself
-1. create credentials for aws cli , use both as secret  text
+1. for S3 integration we will configure aws cli in the pipeline itself
+1. create credentials for aws cli, use both as the secret  text
 
 ### Stage-05:  DockerHub integration with Jenkins
 1. go to Manage jenkins >Manage Credentials > system > Add credentials > vault Username-Password Credential
@@ -426,22 +426,22 @@ the policy is created with * means the vault server can read credentials from ev
 1. k/v engine – 1
 1. id – give some id like docker-cred
 1. Description -  give some description
-1. click on Test Vault Secrets retrieval  > should give output as secrets retrive successfully otherwise reconfigure vault server in jenkins
+1. click on Test Vault Secrets retrieval  > should give output as secrets retrieved successfully otherwise reconfigure the vault server in jenkins
 1. Apply and Save
 
 ### Stage-05:  Slack integration with Jenkins
-1.  go to Manage jenkins >Manage Credentials > system > Add credentials > secret text file > give some name to credentials , paste token we create in slack app and save and apply.
-1. now to  Manage  Jenkins  >  configure system / system >  search for Slack
-1. workspace – your workspace name ( you create after the login into slack)
-1. Credential – attach slack token
-1. Default channel name – write channel name we created at the time of slack installation like - #cicd-pipeline
+1.  go to Manage Jenkins>Manage Credentials > system > Add credentials > secret text file > give some name to credentials, paste the token we create in the Slack app and save and apply.
+1. now to  Manage  Jenkins  >  configure system/system>  search for Slack
+1. workspace – your workspace name ( you create after login into Slack)
+1. Credential – attach the slack token
+1. Default channel name – write the channel name we created at the time of slack installation like - #cicd-pipeline
 1. Apply and save
 
 ### Stage-06:  GitHub integration with Jenkins ( application code repo )
-1. go to github  > go to application code repo > settings
+1. go to GitHub  > go to application code repo > settings
 1. go to webhook >  Add webhook
 1. Payload URL -  http://jenkins-server-public-ip-with-port/github-webhook/
-1.  click on Add webhook
+1.  click on Add Webhook
 
 
 ### Stage-07:  ArgoCD integration with Github ( k8s manifest repo)
@@ -461,10 +461,10 @@ ehco “copied-password” | base64 -d
 1. click on New Application
 1. give app name
 1. chose Project Name as default
-1. SYNC Policy – Automactic
+1. SYNC Policy – Automatic
 1. enable PRUNE RESOURCES and SELF HEAL
 1. SOURCE-
-1. Repository URL – give your repo url where you stored k8s manifest
+1. Repository URL – give your repo URL where you stored the k8s manifest
 1. Path – yamls
 1. DESTINATION -
 1. Cluster Url – chose default
@@ -474,13 +474,6 @@ ehco “copied-password” | base64 -d
 ### Stage-08:  Prometheus and Grafana Integration
 use this docs to import Dashboard into grafana
 https://www.coachdevops.com/2022/05/how-to-setup-monitoring-on-kubernetes.html
-
-
-
-
-
-
-
 
 
 # We integrated all the tools with Jenkins, Now Create a declarative jenkins  pipeline for each stage.
@@ -510,7 +503,7 @@ pipeline {
 1. Define a stage as git checkout
 1. go to this site https://opensource.triology.de/jenkins/pipeline-syntax/
 1. search for checkout: check out version control
-1. give your github url, branch and generate the pipeline synatx
+1. give your GitHub URL, branch and generate the pipeline syntax
 1. paste it into stage steps git check
 
 ```sh 
@@ -520,11 +513,11 @@ stage('Checkout git') {
             }
         }
 ```
-### Stage-02 : Build and Junit test
+### Stage-02: Build and Junit test
 1. Define a stage as Build and Junit test 
 1. go to this site https://opensource.triology.de/jenkins/pipeline-syntax/
-1. search for sh:shell script 
-1. give your shell comman and generate the pipeline synatx
+1. search for sh: shell script 
+1. give your shell command and generate the pipeline syntax
 1. paste it into stage >  steps > sh ‘ shell command’
 
 
@@ -537,10 +530,10 @@ stage ('Build & JUnit Test') {
 }
 ```
 ### Stage-03 : SonarQube Analysis
-In this stage i used withSonarQubeEnv to  Prepare SonarQube Scanner environment
+In this stage, I used withSonarQubeEnv to  Prepare the SonarQube Scanner environment
 and shell command sh
 1. Define  a stage SonarQube Analysis
-1. paste the command that we created at the time of sonarqube project creation
+1. paste the command that we created at the time of the sonarqube project creation
 ```sh
 stage('SonarQube Analysis'){
             steps{
@@ -557,8 +550,8 @@ stage('SonarQube Analysis'){
 ```
 
 ### Stage-04 : Quality gate
-This step pauses Pipeline execution and wait for previously submitted SonarQube analysis to be completed and returns quality gate status. Setting the parameter abortPipeline to true will abort the pipeline if quality gate status is not green.
-1. Define a stage as Quality gate
+This step pauses Pipeline execution and waits for the previously submitted SonarQube analysis to be completed and returns quality gate status. Setting the parameter abortPipeline to true will abort the pipeline if the quality gate status is not green.
+1. Define a stage as a Quality gate
 1. go to this site https://opensource.triology.de/jenkins/pipeline-syntax/
 1. search for  waitForQualityGate: Wait for SonarQube analysis to be completed and return quality gate status
 1. generate pipeline syntax and paste it into steps
@@ -602,13 +595,13 @@ steps {
         }
 ```
 ### Stage-06 : Docker Build
-First write your dockerfile to build docker images.I have posted my  application repo code
-In this stage i  used shell command sh to build docker image
+First, write your dockerfile to build docker images. I have posted my dockerfile in  the application repo code
+In this stage, I  used the shell command sh to build the docker image
 1. Define  a stage Docker Build
 1. go to this site https://opensource.triology.de/jenkins/pipeline-syntax/
-1. search for sh:shell script 
+1. search for sh: shell script 
 1. give your shell command to build image > generate pipeline syntax
-1. I used build id of jenkins and git commit id for versions of docker images
+1. I used the build-id of jenkins and git commit id for versions of docker images
 
 ```sh
 sstage('Docker  Build') {
@@ -620,28 +613,28 @@ sstage('Docker  Build') {
         }
 ```
 ### Stage-06: Trivy Image scan
-In this stage i  trivy shell command sh to scan docker image
+In this stage, I  trivy shell command sh to scan the docker image
 1. Define  a stage Trivy Image scan
 1. go to this site https://opensource.triology.de/jenkins/pipeline-syntax/
-1. search for sh:shell script 
-1.  give your Trivy shell command to scan build image
-#### Note – There are 3 types of report output  format of trivy ( Table , JSON, Template). I used  html template for output report of trivy scan
+1. search for sh: shell script 
+1.  give your Trivy shell command to scan the docker image
+#### Note – There are 3 types of report output  formats of trivy ( Table, JSON, Template). I used  HTML template for the output report of the trivy scan
 ```sh
 stage('Image Scan') {
             steps {
-      	        sh ' trivy image --format template --template "@/usr/local/share/trivy/templates/html.tpl" -o report.html ${IMAGE_REPO}/${NAME}:${VERSION}-${GIT_COMMIT} '
+      	        sh ' trivy image --format template --template "@/usr/local/share/trivy/templates/html.tpl" -o report.html 		${IMAGE_REPO}/${NAME}:${VERSION}-${GIT_COMMIT} '
             }
         }
 	}
 }
 ```
 ### Stage-07: Upload report generated by trivy to AWS S3
-In this stage i  shell command sh to scan docker image
+In this stage, I used the shell command sh to Upload Scan report to AWS S3
 1. Define  a stage Upload report to AWS S3
-1. first create a AWS s3 bucket 
+1. first create an AWS s3 bucket 
 1. go to this site https://opensource.triology.de/jenkins/pipeline-syntax/
-1. search for sh:shell script
-1. give your shell command to upload object to aws s3
+1. search for sh: shell script
+1. give your shell command to upload the object to aws s3
 
 ```sh
 stage('Upload Scan report to AWS S3') {
@@ -654,11 +647,11 @@ stage('Upload Scan report to AWS S3') {
 ```
 
 ### Stage-08: Push Docker images to DockerHub
-In this stage i  shell command sh to push docker image to docker hub. I stored Credentials into Vault and access into jenkins using  vault key. You can store DockerHub credentials into jenkins and use as environment variables
+In this stage, I used   the shell command sh to push the docker image to the docker hub. I stored Credentials in Vault and accessed them in jenkins using  the Vault key. You can store DockerHub credentials in jenkins and use them as environment variables
 1. Define  a stage Docker images push
 1. go to this site https://opensource.triology.de/jenkins/pipeline-syntax/
-1. search for sh:shell script
-1. give your shell command to push docker images to docker hub
+1. search for sh: shell script
+1. give your shell command to push docker images to the docker hub
 
  ``` sh
 stage ('Docker Build') {
@@ -667,6 +660,7 @@ stage ('Docker Build') {
                     
                     sh "docker login -u ${username} -p ${password} "
                     sh 'docker push ${IMAGE_REPO}/${NAME}:${VERSION}-${GIT_COMMIT}'
+		    sh 'docker rmi  ${IMAGE_REPO}/${NAME}:${VERSION}-${GIT_COMMIT}'
                     
                     
                 }
@@ -674,7 +668,7 @@ stage ('Docker Build') {
         }
  ``` 
 ### Stage-08: Clone/Pull Repo (k8s manifest repo )
-1. in this stage first we check whether repo is already exists or not
+1. in this stage first we check whether the repo already exists or not
 1. if exists then pull the changes
 1. if not then will clone the repo
 
@@ -711,13 +705,13 @@ stage('Update Manifest') {
             }
         }
 ```
-## Stage: 11 Commit and Push Changes to k8s manifest repo
+## Stage: 11 Commit and Push Changes to the k8s manifest repo
 1. set the global username
-1. set the remote repo url
+1. set the remote repo URL
 1. checkout the branch to feature
-1. stage the chages
+1. stage the changes
 1. commit the changes
-1. push the changes to feature branch
+1. push the changes to the feature branch
 ```sh
 stage('Commit & Push') {
             steps {
@@ -736,7 +730,7 @@ stage('Commit & Push') {
 ```
 
 ## Stage: 12 Create Pull Request
-Reason to create a pull request is that argocd is sync automatically with github . Github is only single source of truth for argocd. So if jenkins push the chaanges to main branch then argocd will deploy changes directly without review the changes. This should not happen in Production environment . That’s why we create pull request against main branch. So a senior person form team can review the changes and merge it to main branch. Then n then only changes will go to production environment. 
+The reason to create a pull request is that argocd is sync automatically with Git Hub. GitHub is the only single source of truth for argocd. So if jenkins push the changes to the main branch then argocd will deploy changes directly without reviewing the changes. This should not happen in the Production environment. That’s why we create pull requests against the main branch. So a senior person from the team can review the changes and merge them into the main branch. Then n then only changes should go to the production environment. 
 1. 
 ```sh
 stage('Raise PR') {
@@ -761,10 +755,10 @@ stage('Raise PR') {
 
 
 ## Stage: 13 Post build action 
-In post build action i used slack notification . After  build jenkins will send notification massage to slack whether your build success or failed.
+In post build action I used Slack notification. After  the build jenkins will send a notification message to Slack whether your build success or failure.
 1. go to jenkins > your project > pipeline syntax > search for slacksend: send slack message 
 1. write your channel name and message > generate pipeline synatx .
-#### Note – i used custom messages for my project . I Created a function for slack notification and called the function into post build .
+#### Note – I used custom messages for my project. I created a function for Slack notification and called the function into Post build.
  ```sh
 post{
 	always{
@@ -786,10 +780,10 @@ slackSend( channel: "#devops", token: 'slack-token', color : "danger", message: 
 }
 }
  ```
-#### Find whole pipeline here
+#### Find the whole pipeline here
  https://github.com/praveensirvi1212/DevOps_MasterPiece-CI-with-Jenkins/blob/main/Jenkinsfile
 
-## Step: 4 Projecct Output
+## Step: 4 Project Output
 
 # Final outputs of this Project
 ### Jenkins Output : 
