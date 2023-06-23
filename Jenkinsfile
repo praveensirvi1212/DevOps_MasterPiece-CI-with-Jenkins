@@ -102,7 +102,7 @@ pipeline {
                     
                     sh "docker login -u ${username} -p ${password} "
                     sh 'docker push ${IMAGE_REPO}/${NAME}:${VERSION}-${GIT_COMMIT}'
-                    
+                    sh 'docker rmi  ${IMAGE_REPO}/${NAME}:${VERSION}-${GIT_COMMIT}'
                     
                 }
             }
