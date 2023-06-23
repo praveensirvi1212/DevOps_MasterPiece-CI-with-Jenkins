@@ -849,6 +849,9 @@ You can apply your custom quality gate like there should be zero ( bug, Vulnerab
 ### Pull Request created by jenkins
 ![](https://github.com/praveensirvi1212/DevOps_MasterPiece-CI-with-Jenkins/blob/main/images/pr.png)
 
+### App in ArgoCD  
+![](https://github.com/praveensirvi1212/DevOps_MasterPiece-CI-with-Jenkins/blob/main/images/argocd.png)
+
 
 ### Application output deployed in k8s 
 ![](https://github.com/praveensirvi1212/DevSecOps-project/blob/main/Images/spring-boot-app-op.png) 
