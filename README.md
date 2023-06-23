@@ -76,7 +76,7 @@ if the docker build fails when the whole pipeline will become a failure and Jenk
 ### Stage-01: Install JDK and Create a Java Springboot application
 Push all the web application  code files into GitHub
 
-![](https://github.com/praveensirvi1212/DevSecOps-project/blob/main/Images/code.png) 
+![](https://github.com/praveensirvi1212/DevOps_MasterPiece-CI-with-Jenkins/blob/main/images/Screenshot%20from%202023-06-23%2022-45-05.png)
 
 ### Stage-02: Install Jenkins, Docker, Trivy, AWS CLI, Github CLI, Terraform ( t2.large node1 -Jenkins-server)
 #### Jenkins Installation Prerequisites  https://www.jenkins.io/doc/book/installing/linux/
