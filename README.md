@@ -853,8 +853,8 @@ You can apply your custom quality gate like there should be zero ( bug, Vulnerab
 ![](https://github.com/praveensirvi1212/DevOps_MasterPiece-CI-with-Jenkins/blob/main/images/argocd.png)
 
 
-### Application output deployed in k8s 
-![](https://github.com/praveensirvi1212/DevSecOps-project/blob/main/Images/spring-boot-app-op.png) 
+### Application output deployed in EKS Cluster by ArgoCD 
+![](https://github.com/praveensirvi1212/DevOps_MasterPiece-CI-with-Jenkins/blob/main/images/Screenshot%20from%202023-06-22%2023-24-29.png)
 
 ### Slack output 
 ![](https://github.com/praveensirvi1212/DevSecOps-project/blob/main/Images/slackop.png) 
