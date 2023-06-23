@@ -166,18 +166,18 @@ sudo apt install vault -y
  ### Stage-04: Install Jfrog Artifactory ( t2.medium node3 - Jforg-artifactory server )
 1. install the docker 
 ```sh
-	sudo apt update
-	sudo apt install docker.io
+sudo apt update
+sudo apt install docker.io
 ```
 1. install Jfrog Artifactory
 ```sh 
-	sudo docker pull docker.bintray.io/jfrog/artifactory-oss:latest
-	sudo mkdir -p /jfrog/artifactory
-	sudo chown -R 1030 /jfrog/
-	sudo docker run --name artifactory -d -p 8081:8081 -p 8082:8082 \
+sudo docker pull docker.bintray.io/jfrog/artifactory-oss:latest
+sudo mkdir -p /jfrog/artifactory
+sudo chown -R 1030 /jfrog/
+sudo docker run --name artifactory -d -p 8081:8081 -p 8082:8082 \
 	-v /jfrog/artifactory:/var/opt/jfrog/artifactory \
 	docker.bintray.io/jfrog/artifactory-oss:latest
-
+```
 ### Stage-05 : Install Slack
 Slack is a workplace communication tool, “a single place for messaging, tools and files.” .
 
