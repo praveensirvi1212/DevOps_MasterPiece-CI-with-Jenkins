@@ -65,9 +65,9 @@ if the docker build fails when the whole pipeline will become a failure and Jenk
 ## Server Configuration ( I used )
 1. 2 t2.medium ( ubuntu) EC2 Instances –  1. one for sonarqube and Hashicorp vault server
 			                  2. another for Jfrog Artifactory
-1. 1 t2.large (ubuntu ) EC2 Instance -  For Jenkins, Docker, Trivy, AWS CLI, Github CLI, Terraform
+2. 1 t2.large (ubuntu ) EC2 Instance -  For Jenkins, Docker, Trivy, AWS CLI, Github CLI, Terraform
 
-1. EKS Cluster with t3.medium nodes
+3. EKS Cluster with t3.medium nodes
 
 
 # Want to create this Project on your own  then *Follow these  project steps*
@@ -81,9 +81,9 @@ Push all the web application  code files into GitHub
 ### Stage-02: Install Jenkins, Docker, Trivy, AWS CLI, Github CLI, Terraform ( t2.large node1 -Jenkins-server)
 #### Jenkins Installation Prerequisites  https://www.jenkins.io/doc/book/installing/linux/
 1. Installation guide is available here  https://github.com/praveensirvi1212/DevSecOps-project/blob/main/Jenkins_installation.md
-1. After installation, install the suggested plugins
-1. Open Jenkins Dashboard and install required plugins – SonarQube Scanner, Quality gates Artifactory, Hashicorp Vault, Slack, Open Blue Ocean
-1. go to manage Jenkins > manage plugins > search for plugins > Download now and install after restart
+2. After installation, install the suggested plugins
+3. Open Jenkins Dashboard and install required plugins – SonarQube Scanner, Quality gates Artifactory, Hashicorp Vault, Slack, Open Blue Ocean
+4. go to manage Jenkins > manage plugins > search for plugins > Download now and install after restart
 ![](https://github.com/praveensirvi1212/DevSecOps-project/blob/main/Images/jenkins.png) 
 
 #### Docker Installtion
@@ -91,7 +91,7 @@ Push all the web application  code files into GitHub
 ```sh
 sudo apt install docker.io
 ```
-1.  add the current user and Jenkins user into the docker group
+2. add the current user and Jenkins user into the docker group
 ```sh
 sudo usermod -aG docker $USER
 sudo usermod -aG docker jenkins
@@ -147,7 +147,7 @@ sudo apt-get install terraform
 sudo apt update
 sudo apt install docker.io
 ```
-1. create a docker container to install SonarQube
+2. create a docker container to install SonarQube
 ```sh
 sudo docker run -d -p 9000:9000 --name sonarqube sonarqube  
 ```
@@ -169,7 +169,7 @@ sudo apt install vault -y
 sudo apt update
 sudo apt install docker.io
 ```
-1. install Jfrog Artifactory
+2. install Jfrog Artifactory
 ```sh 
 sudo docker pull docker.bintray.io/jfrog/artifactory-oss:latest
 sudo mkdir -p /jfrog/artifactory
@@ -198,7 +198,7 @@ I am assuming that you have already Kubernetes cluster running
 kubectl create namespace argocd 
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 ```
-1. edit the argocd-server service to NodePort to access argocd ui
+2. edit the argocd-server service to NodePort to access argocd ui
 
 ### Stage-10: Install helm 
 1. use these commands to install the helm
@@ -238,7 +238,7 @@ Password: prom-operator
 
 ### Stage-01 : Jenkins Configuration
 1. go to Manage Jenkins > configure tools > go to maven> give some name and click on install automatically
-1. go to Manage Jenkins > configure tools > go to sonarqube scanner > give some name and click on install automatically 
+2. go to Manage Jenkins > configure tools > go to sonarqube scanner > give some name and click on install automatically 
 
 ### Stage-02: Hashicorp Vault Configuration
 
