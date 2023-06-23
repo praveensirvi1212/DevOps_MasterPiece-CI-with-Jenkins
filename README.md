@@ -825,7 +825,7 @@ Sorry, I forgot to change the stage name while building the job,but don't worry 
 ![](https://github.com/praveensirvi1212/DevOps_MasterPiece-CI-with-Jenkins/blob/main/images/jenkins.png)
 
 ### Sonarqube Output: 
-![](https://github.com/praveensirvi1212/DevSecOps-project/blob/main/Images/sonarqubeop.png) 
+![](https://github.com/praveensirvi1212/DevOps_MasterPiece-CI-with-Jenkins/blob/main/images/sonarqube.png) 
 
 ### Quality Gate Status in Jenkins
 This Output is the build number 86th. SonarQube Quality gate status is green and passed .   
