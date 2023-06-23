@@ -828,9 +828,9 @@ Sorry, I forgot to change the stage name while building the job,but don't worry 
 ![](https://github.com/praveensirvi1212/DevOps_MasterPiece-CI-with-Jenkins/blob/main/images/sonarqube.png) 
 
 ### Quality Gate Status in Jenkins
-This Output is the build number 86th. SonarQube Quality gate status is green and passed .   
-You applied your custom quality gate like : there should be zero ( bug, Vulnerability , code smell ) and your code have greater then 0 (bugs, vulnerability , code smells) . Then your quality gate status will become failure or red. If your quality gate status beome failure , stages after quality gate will be failure.
-![](https://github.com/praveensirvi1212/DevSecOps-project/blob/main/Images/qualitygateop.png) 
+ SonarQube Quality gate status is green and passed.   
+You can apply your custom quality gate like there should be zero ( bug, Vulnerability, code smell ) and if your code has greater than 0 (bugs, vulnerability, code smells). Then your quality gate status will become a failure or red. If your quality gate status becomes a failure, stages after the quality gate will be a failure.
+![](https://github.com/praveensirvi1212/DevOps_MasterPiece-CI-with-Jenkins/blob/main/images/quality-gate.png)
 
 ### Trivy report in AWS S3 push by jenkins
 ![](https://github.com/praveensirvi1212/DevSecOps-project/blob/main/Images/trivy-report-s3.png) 
