@@ -1,4 +1,4 @@
-# DevOps_MasterPiece-CI-with-Jenkins
+
 # DevOps-MasterPiece
 
 In this project, I created an end-to-end CI-CD pipeline  while keeping in mind Securities Best Practices, DevSecOps principles and used all these tools *Git, GitHub , Jenkins,Maven, Junit, SonarQube, Jfrog Artifactory, Docker, Trivy, AWS S3, Docker Hub, Github CLI, EKS, ArgoCD, Prometheus, Grafana, Slack and Hashicorp Vault,*  to achive the goal.
