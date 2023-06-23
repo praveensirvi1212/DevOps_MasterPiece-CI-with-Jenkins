@@ -226,13 +226,13 @@ kubectl edit svc stable-kube-prometheus-sta-prometheus -n prometheus
 kubectl edit svc stable-grafana -n prometheus
 kubectl get svc -n prometheus
 
-#Access Grafana UI in the browser using load balancero or nodeport
+#Access Grafana UI in the browser using load balancer or nodeport
 
 UserName: admin 
 Password: prom-operator
 
 ```
-# Done with Installation, Now will we COnfigure all the tools with Jenkins
+# Done with Installation, Now will we Configure all the tools with Jenkins
 
 ## Step: 2 Configure Individual tool
 
@@ -363,7 +363,7 @@ If you already have a dockerhub account then no need to create another
 
 Note: we can create token from dockerhub to integrate jenkins but in this case, I am using docker username and password.
 
-### Stage-07: Slack Configuration
+### Stage-07: Slack Configuration for jenkins
 1.  go to this site https://slack.com/intl/en-in
 1.  sign up with Google
 1.  create a workspace
@@ -381,6 +381,23 @@ Note: we can create token from dockerhub to integrate jenkins but in this case, 
 1. go down to Integration Settings and copy the Token and save it somewhere
 1. click on Save settings
 
+### Stage-08: Slack Configuration for ArgoCD 
+1. Go to this site https://api.slack.com/apps
+2. click on Create New App
+3. select From scratch
+4. give some app name
+5. pick your workspace
+6. click on Create App
+7. go to OAuth & Permission
+8. go to Scope > Bot Token Scope
+9. search in the search bar and select `chat:write` ,`chat:write.customize`
+10. now to up to OAuth Token for Your Workspace
+11. click on Install to workspace
+12. all your app to access your workspace
+13. now copy Bot user OAuth Token and save it somewhere
+14. now open slack , you will find your app in Apps
+15. now create a channel - click on channels > create channel > give some name to channel > create
+16. now in message bar type `@your-app-name` and click on send icon >  click on add to channel
 
 
 ## Step: 3 Store the Credentials in the Vault server
@@ -412,7 +429,7 @@ vault policy write jenkins jenkins-policy.hcl
  
  
 
-## Step: 4 Integrate all the tools into jenkins 
+## Step: 4 Integrate all the tools into jenkins for CI
 ### Stage-01: Hashicorp Vault server integration with Jenkins
 1. go to Jenkins>  Manage  Jenkins >Manage Credentials > system > Add credentials > Vault App Role Credentials > Paste role-id and secret-id token (we create in Vault - approle)  and save and apply.
 1. now to  Manage  Jenkins  >  configure system/system>  search for vault plugin
@@ -442,6 +459,7 @@ vault policy write jenkins jenkins-policy.hcl
 1. JFrog Distribution URL - http://localhost:8082/distribution
 1. Default Deployer Credentials – give username and password of artifactory (not admin user)
 1. Apply and save
+2. 
 ### Stage-04:  AWS S3 integration with Jenkins
 1. for S3 integration we will configure aws cli in the pipeline itself
 1. create credentials for aws cli, use both as the secret  text
@@ -473,8 +491,8 @@ vault policy write jenkins jenkins-policy.hcl
 1. Payload URL -  http://jenkins-server-public-ip-with-port/github-webhook/
 1.  click on Add Webhook
 
-
-### Stage-07:  ArgoCD integration with Github ( k8s manifest repo)
+## Step: 5 Integrate ArgoCD with github and slack for CD
+### Stage-01:  ArgoCD integration with Github ( k8s manifest repo)
 1. access the argocd UI – node public ip and node port
 1. user username as `admin`
 1. for password run this command
@@ -501,14 +519,14 @@ ehco “copied-password” | base64 -d
 1. namespace- default
 1. click on create
 
-### Stage-08:  Prometheus and Grafana Integration
+### Stage-02:  Prometheus and Grafana Integration
 use this docs to import Dashboard into grafana
 https://www.coachdevops.com/2022/05/how-to-setup-monitoring-on-kubernetes.html
 
 
 # We integrated all the tools with Jenkins, Now Create a declarative jenkins  pipeline for each stage.
 
-## Step: 5 Pipeline creation
+## Step: 6 Pipeline creation
 
 ### General Jenkins  declarative Pipeline Syntax
 
@@ -723,7 +741,7 @@ stage('Clone/Pull Repo') {
         }
 ```
 
-# Stage: 10 Update Manifest
+### Stage: 10 Update Manifest
 1. used sed command to replace images tag in deployment manifests
 ```sh
 stage('Update Manifest') {
@@ -735,7 +753,7 @@ stage('Update Manifest') {
             }
         }
 ```
-## Stage: 11 Commit and Push Changes to the k8s manifest repo
+### Stage: 11 Commit and Push Changes to the k8s manifest repo
 1. set the global username
 1. set the remote repo URL
 1. checkout the branch to feature
@@ -759,7 +777,7 @@ stage('Commit & Push') {
         }
 ```
 
-## Stage: 12 Create Pull Request
+### Stage: 12 Create Pull Request
 `The reason to create a pull request is that argocd is sync automatically with Git Hub. GitHub is the only single source of truth for argocd. So if jenkins push the changes to the main branch then argocd will deploy changes directly without reviewing the changes. This should not happen in the Production environment. That’s why we create pull requests against the main branch. So a senior person from the team can review the changes and merge them into the main branch. Then n then only changes should go to the production environment.`
 
 Here `token.txt` contain the GitHub token, the reason for storing the GitHub token in the text file bcoz `gh auth login --with-token` accept only STDIN Input 
@@ -786,10 +804,10 @@ stage('Raise PR') {
 
 
 
-## Stage: 13 Post build action 
+### Stage: 13 Post build action 
 In post build action I used Slack notification. After  the build jenkins will send a notification message to Slack whether your build success or failure.
 1. go to jenkins > your project > pipeline syntax > search for slacksend: send slack message 
-1. write your channel name and message > generate pipeline synatx .
+1. write your channel name and message > generate pipeline syntax.
 #### Note – I used custom messages for my project. I created a function for Slack notification and called the function into Post build.
  ```sh
 post{
@@ -816,7 +834,7 @@ def sendSlackNotifcation()
 #### Find the whole pipeline here
  https://github.com/praveensirvi1212/DevOps_MasterPiece-CI-with-Jenkins/blob/main/Jenkinsfile
 
-## Step: 4 Project Output
+## Step: 7 Project Output
 
 # Final outputs of this Project
 ### Jenkins Output : 
