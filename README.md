@@ -143,9 +143,13 @@ sudo apt-get install terraform
 ### Stage-03 : Install SonarQube and Hashicorp Vault ( t2.medium node2 - SonarQube Server )
 #### SonarQube installation
 1. install docker on the sonarqube server
+```sh
+sudo apt update
+sudo apt install docker.io
+```
 1. create a docker container to install SonarQube
 ```sh
-    docker run -d -p 9000:9000 --name sonarqube sonarqube  
+sudo docker run -d -p 9000:9000 --name sonarqube sonarqube  
 ```
 
 #### Install the Hashicorp Vault server 
