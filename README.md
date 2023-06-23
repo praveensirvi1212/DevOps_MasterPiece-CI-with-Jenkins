@@ -1,16 +1,16 @@
 
 # DevOps-MasterPiece
 
-In this project, I created an end-to-end CI-CD pipeline  while keeping in mind Securities Best Practices, DevSecOps principles and used all these tools *Git, GitHub , Jenkins,Maven, Junit, SonarQube, Jfrog Artifactory, Docker, Trivy, AWS S3, Docker Hub, Github CLI, EKS, ArgoCD, Prometheus, Grafana, Slack and Hashicorp Vault,*  to achive the goal.
+In this project, I created an end-to-end CI-CD pipeline  while keeping in mind Securities Best Practices,DevSecOps principles and used all these tools *Git, GitHub, Jenkins, Maven, JUnit, SonarQube, Jfrog Artifactory, Docker, Trivy, AWS S3, Docker Hub, GitHub CLI, EKS, ArgoCD, Prometheus, Grafana, Slack and Hashicorp Vault,*  to achieve the goal.
 
 #### I used Jenkins for Continuous Integration and ArgoCD for Continuous Deployment.
 
 ## Project Architecture
 ![](https://github.com/praveensirvi1212/DevOps_MasterPiece-CI-with-Jenkins/blob/main/images/pipeline.png)
 ## Pipeline flow:
-1. When an event (commit) will occur in application code github repo ,  github webhook will push the code to Jenkins and Jenkins will start the build.
+1. When an event (commit) will occur in the application code GitHub repo,  the GitHub webhook will push the code to Jenkins and Jenkins will start the build.
 
-2. Maven will build the code, if the build fails, the whole pipeline will become a failure and Jenkins will notify the user using slack, If build success then
+2. Maven will build the code, if the build fails, the whole pipeline will become a failure and Jenkins will notify the user using Slack, If build success then
 
 3.  Junit will do unit testing, if the application passes test cases then will go to the next step otherwise the whole pipeline will become a failure Jenkins will notify the user that your build fails.
 
@@ -20,26 +20,26 @@ In this project, I created an end-to-end CI-CD pipeline  while keeping in mind S
                     Also, we have to create a webhook to send the status of quality gate status to Jenkins.
  If the quality gate status becomes a failure, the whole pipeline will become a failure then Jenkins will notify the user that your build fails.
 
-5. After the quality gate passes, Artifacts will be send to Jfrog Artifactory. If artifacts send to artifactory successfully then will go to next stgae otherwise the whole pipeline will become a failure Jenkins will notify the user that your build fails.
+5. After the quality gate passes, Artifacts will be sent to Jfrog Artifactory. If artifacts send to the artifactory successfully then will go to the next stage otherwise the whole pipeline will become a failure Jenkins will notify the user that your build fails.
 
-6. After successful artifacts pushes to artifactory , Docker will build the docker image.
+6. After successful artifacts push to Artifactory, Docker will build the docker image.
 if the docker build fails when the whole pipeline will become a failure and Jenkins will notify the user that your build fails.
 
 6. Trivy will scan the docker image, if it finds any Vulnerability then the whole pipeline will become a failure, and the generated report will be sent to s3 for future review and Jenkins will notify the user that your build fails.
 
-7. After trivy scan docker images will be pushed to the docker hub, if the docker fails to push docker images to the docker hub then the pipeline will become a failure and Jenkins will notify the user that your build fails.
+7. After the Trivy scan docker images will be pushed to the docker hub, if the docker fails to push docker images to the docker hub then the pipeline will become a failure and Jenkins will notify the user that your build fails.
 
-8. After the docker push, Jenkins will clone the kubernetes manifest repo from feature branch, if the repo is already present then it will only pull the changes. If jenkis unable to clone the repo then the whole pipeline will become a failure and Jenkins will notify the user that your build fails.
+8. After the docker push, Jenkins will clone the Kubernetes manifest repo from the feature branch, if the repo is already present then it will only pull the changes. If Jenkins is unable to clone the repo then the whole pipeline will become a failure and Jenkins will notify the user that your build fails.
 
-9. After Cloning the repo , Jenkins will update the imgae tag in deployment manifest. If jenkis unable to update the image tag  then the whole pipeline will become a failure and Jenkins will notify the user that your build fails.
+9. After Cloning the repo, Jenkins will update the image tag in the deployment manifest. If Jenkins is unable to update the image tag  then the whole pipeline will become a failure and Jenkins will notify the user that your build fails.
 
-10. After update image tag , jenkins will commit the change and push the code to feature branch. If jenkis unable to push the changes to feature branch  then the whole pipeline will become a failure and Jenkins will notify the user that your build fails.
+10. After updating the image tag, Jenkins will commit the change and push the code to the feature branch. If Jenkins is unable to push the changes to the feature branch  then the whole pipeline will become a failure and Jenkins will notify the user that your build fails.
 
-11. After push changes to feature branch, jenkins will create a pull request against main branch.If jenkis unable to create pull request  then the whole pipeline will become a failure and Jenkins will notify the user that your build fails.
+11. After pushing changes to the feature branch, Jenkins will create a pull request against the main branch. If Jenkins is unable to create a pull request  then the whole pipeline will become a failure and Jenkins will notify the user that your build fails.
 
-12. After pull request creation , a senior person from team will review and merge the pull request .
+12. After the pull request creation, a senior person from the team will review and merge the pull request.
 
-13. After merging feature branch into main branch , ArgoCD will pull the changes and deploy the application into kubernetes.
+13. After merging the feature branch into the main branch, ArgoCD will pull the changes and deploy the application into Kubernetes.
 
 ### PreRequisites
 1. JDK 
@@ -63,27 +63,27 @@ if the docker build fails when the whole pipeline will become a failure and Jenk
 1. Slack
 
 ## Server Configuration ( I used )
-1. 2 t2.medium ( ubuntu) EC2 Instances –  1. one for sonarqube and vault server
-                                                     2. another for Jfrog Artifactory
-1.  1 t2.large (ubuntu ) EC2 Instance -  For Jenkins, Docker, Trivy, AWS CLI, Github CLI, Terraform
+1. 2 t2.medium ( ubuntu) EC2 Instances –  1. one for sonarqube and Hashicorp vault server
+			                  2. another for Jfrog Artifactory
+1. 1 t2.large (ubuntu ) EC2 Instance -  For Jenkins, Docker, Trivy, AWS CLI, Github CLI, Terraform
 
 1. EKS Cluster with t3.medium nodes
 
 
- # Want to create this Project by your own  then *Follow these  project steps*
+# Want to create this Project on your own  then *Follow these  project steps*
 ## Step: 1 Installation Part 
 
-### Stage-01 : Install JDK and Create a Java Springboot application
-Push all the web application page code file into github
+### Stage-01: Install JDK and Create a Java Springboot application
+Push all the web application page code files into GitHub
 
 ![](https://github.com/praveensirvi1212/DevSecOps-project/blob/main/Images/code.png) 
 
-### Stage-02 : Install Jenkins , Docker, Trivy, AWS CLI, Github CLI, Terrafrom ( t2.large )
+### Stage-02: Install Jenkins, Docker, Trivy, AWS CLI, Github CLI, Terraform ( t2.large node1 -Jenkins-server)
 #### Jenkins Installation Prerequisites  https://www.jenkins.io/doc/book/installing/linux/
 1. Installation guide is available here  https://github.com/praveensirvi1212/DevSecOps-project/blob/main/Jenkins_installation.md
-1. After installation, install suggested plugins
+1. After installation, install the suggested plugins
 1. Open Jenkins Dashboard and install required plugins – SonarQube Scanner, Quality gates Artifactory, Hashicorp Vault, Slack, Open Blue Ocean
-1. go to manage jenkins > manage pulgins > search for plugins > Download now and install after restart
+1. go to manage Jenkins > manage plugins > search for plugins > Download now and install after restart
 ![](https://github.com/praveensirvi1212/DevSecOps-project/blob/main/Images/jenkins.png) 
 
 #### Docker Installtion
@@ -91,10 +91,10 @@ Push all the web application page code file into github
 ```sh
 	sudo apt install docker.io
 ```
-1.  add current user and jenkins user into docker group
+1.  add the current user and Jenkins user into the docker group
 ```sh
  	sudo usermod -aG docker $USER
-             sudo usermod -aG docker jenkins
+        sudo usermod -aG docker jenkins
 ```
 #### Trivy Installation
 1. Insatll trivy using this commands
@@ -106,7 +106,7 @@ Push all the web application page code file into github
 	sudo apt-get install trivy
 ```
 #### AWS CLI installation
-1. install aws cli  using this commands
+1. install aws cli  using these commands
 ```sh 
 	sudo apt install unzip
             curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
@@ -114,7 +114,7 @@ Push all the web application page code file into github
 	sudo ./aws/install
 ```
 #### Install GitHub CLI
-1. install github cli using this commands
+1. install GitHub cli using these commands
 ```sh 
 type -p curl >/dev/null || (sudo apt update && sudo apt install curl -y)
 curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \
@@ -124,7 +124,7 @@ curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo 
 && sudo apt install gh -y
 ```
 #### Install Terraform 
-1. install teraaform using this commands
+1. install terraform using these commands
 ```sh 
 sudo apt-get update && sudo apt-get install -y gnupg software-properties-common
 wget -O- https://apt.releases.hashicorp.com/gpg | \
@@ -140,9 +140,9 @@ sudo apt update
 sudo apt-get install terraform
 ```
 
-### Stage-03 : Install SonarQube and Hashicorp Vault ( t2.medium )
+### Stage-03 : Install SonarQube and Hashicorp Vault ( t2.medium node2 - SonarQube Server )
 #### SonarQube installation
-1. install docker on sonarqube server
+1. install docker on the sonarqube server
 1. create a docker container to install SonarQube
 ```sh
     docker run -d -p 9000:9000 --name sonarqube sonarqube  
@@ -150,9 +150,9 @@ sudo apt-get install terraform
 ![](https://github.com/praveensirvi1212/DevSecOps-project/blob/main/Images/sonarqube.jpeg) 
 
    ``` 
-####  Install Hashicorp Vault server 
+#### Install the Hashicorp Vault server 
 HashiCorp Vault is a secret-management tool specifically designed to control access to sensitive credentials in a low-trust environment.
-1. Installation vault using this commands
+1. Installation vault using these commands
 ```sh
 sudo curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
 sudo apt-add-repository "deb [arch=amd64]  	https://apt.releases.hashicorp.com $(lsb_release -cs) main"
@@ -161,8 +161,8 @@ sudo apt install vault -y
 
 ```
 
- ### Stage-04: Install Jfrog Artifactory ( t2.medium )
-1. install docker 
+ ### Stage-04: Install Jfrog Artifactory ( t2.medium node3 - Jforg-artifactory server )
+1. install the docker 
 ```sh
 	sudo apt update
 	sudo apt install docker.io
@@ -179,26 +179,26 @@ sudo apt install vault -y
 ### Stage-05 : Install Slack
 Slack is a workplace communication tool, “a single place for messaging, tools and files.” .
 
-Install Slack from official website of Slack https://slack.com/intl/en-in/downloads/linux
+Install Slack from the official website of Slack https://slack.com/intl/en-in/downloads/linux
 
 
 ### Stage-08: EKS Cluster Creation using Terraform
-To create EKS Cluster using Terraform, I have put the terraform code here - https://github.com/praveensirvi1212/medicure-project/tree/master/eks_module
+To create EKS Cluster using Terraform, I have put the Terraform code here - https://github.com/praveensirvi1212/medicure-project/tree/master/eks_module
 
-Suggestion – create eks cluster after successful configuration of jenkins server. When jenkins is able to creat pull request in manifest repo. 
+*`Suggestion – create eks cluster after successful configuration of jenkins server. When jenkins is able to create pull request in the manifest repo.` 
 
-# Done with Installation , Now will we integrate all the tools with Jenkins
+
 
 ### Stage-09: Install ArgoCD in EKS 
-I am assuming that you have already kubernetes cluster running
-1. use this commands to install argocd
+I am assuming that you have already Kubernetes cluster running
+1. use these commands to install argocd
 ```sh
 kubectl create namespace argocd kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 ```
 1. edit the argocd-server service to NodePort to access argocd ui
 
 ### Stage-10: Install helm 
-1. use this commands to install helm
+1. use these commands to install the helm
 ```sh
 curl https://baltocdn.com/helm/signing.asc | gpg --dearmor | sudo tee /usr/share/keyrings/helm.gpg > /dev/null
 sudo apt-get install apt-transport-https --yes
@@ -207,7 +207,7 @@ sudo apt-get update
 sudo apt-get install helm
 ```
 ### Stage-11: Install Prometheus and Grafana
-1. use helm to install promethus and grafana
+1. use helm to install Promethus and grafana
 ```sh
 helm repo add stable https://charts.helm.sh/stable
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
@@ -216,7 +216,7 @@ kubectl create namespace prometheus
 helm install stable prometheus-community/kube-prometheus-stack -n prometheus
 kubectl get pods -n prometheus
 kubectl get svc -n prometheus
-#in order to make prometheus and grafana available outside the cluster, use LoadBalancer or NodePort instead of ClusterIP.
+#in order to make Prometheus and grafana available outside the cluster, use LoadBalancer or NodePort instead of ClusterIP.
 #Edit Prometheus Service
 kubectl edit svc stable-kube-prometheus-sta-prometheus -n prometheus
 #Edit Grafana Service
@@ -228,11 +228,8 @@ kubectl get svc -n prometheus
 UserName: admin 
 Password: prom-operator
 
-refer this link for more info
-https://www.coachdevops.com/2022/05/how-to-setup-monitoring-on-kubernetes.html
-
 ```
-
+# Done with Installation, Now will we integrate all the tools with Jenkins
 
 ## Step: 2 Configure Individual tool
 
@@ -240,7 +237,7 @@ https://www.coachdevops.com/2022/05/how-to-setup-monitoring-on-kubernetes.html
 1. go to Manage Jenkins > configure tools > go to maven> give some name and click on install automatically
 1. go to Manage Jenkins > configure tools > go to sonarqube scanner > give some name and click on install automatically 
 
-### Stage-02 : Hashicorp Vault Configuration
+### Stage-02: Hashicorp Vault Configuration
 
 I am assuming that your Vault server is installed and  running 
 * open the ` /etc/vault.d/vault.hcl` file with vi or nano
@@ -268,83 +265,83 @@ ui = true
 
 * `export VAULT_ADDR='http://127.0.0.1:8200'`
 * `vault operator init`
-	* ` copt the unseal tokens and initial root token , save it somewhere for later use `
+	* ` copy the unseal tokens and initial root token, save it somewhere for later use `
 * `vault operator unseal`
-	* ` paste the first unseal token here`
+	* `Paste the first unseal token here`
 * `vault operator unseal`
-	* ` paste the second unseal token here`
+	* `Paste the second unseal token here`
 * `vault operator unseal`
-	* ` paste the third unseal token here`
+	* `Paste the third unseal token here`
 * `vault login <Initial_Root_Token>`
    * `<Initial_Root_Token>` is found in the output of `vault operator init`
 
 * `vault auth enable approle`
   	* https://www.vaultproject.io/docs/auth/approle
 * `vault write auth/approle/role/jenkins-role token_num_uses=0 secret_id_num_uses=0 policies="jenkins"`
-	* `this app role will use for jenkins integration` 
+	* `This app role will use for jenkins integration` 
 * `vault read auth/approle/role/jenkins-role/role-id`
-	* copy the role_id and token, store somewhere
+	* Copy the role_id and token, and store somewhere
 * `vault write -f auth/approle/role/jenkins-role/secret-id`
-	* copy the secret-id and token , store somewhere
+	* Copy the secret-id and token, store them somewhere
 
 
 
 ### Stage-03: SonarQube Server Configuration
-1. Access the sonarqube ui using public ip of server and port 9000
+1. Access the sonarqube ui using the public IP of server and port 9000
 1. default username-password `admin`  and ` admin`
 ##### Project setup
-1.  create a project manually, give some name to project , project key
+1.  create a project manually, give some name to project, project key
 1. click on setup
 1. click on other ci 
-1. give some name to token and click on generate , save it for later username
+1. give some name to the token and click on generate, save it for a later user
 1. click on global
-1. select project type , in this case I used maven
+1. select the project type, in this case, I used Maven
 1. copy the whole command and save it somewhere
 
 ##### Create Quality Gate and webhook
 1.  Click on Quality Gates
-1.  create a new Quality Gate accourding to your conditions
+1.  create a new Quality Gate according to your conditions
 1.  click on Projects > click on all > select your project
 1. set as default
 
 ##### Create webhook
 1. click on Administration
 1. click on Configuration > click on webhooks
-1.  create a webhook > give some name
+1.  create a webhook > Give some name
 1. for url use `http://jenkins-server-url-with-port/sonarqube-webhook/`
 1.  in secret leave the blank
 1. click on create
 
-##### Note: if this webhook not works fine , then recreate webhook after integrating the soanrqube with jenkins
+##### Note: if this webhook does not work fine , then recreate the webhook after integrating the soanrqube with jenkins
 
 
 
 
 ### Stage-04: Artifactory Configuration
-1. access the ui with public ip and port 8081:8081
+1. access the UI with public IP and port 8081
 1. use username-password as `admin` and `password`
 1. update the password
-1. create a maven repo
-1. now go to Administration > user management > create a new user
+1. create a Maven repo
+1. now go to Administration > User management > Create a new user
 1. now go to Repositories > create > locally > give some name like `my-local-repo`
  
 ### Stage-05: S3 Bucket creation to store Trivy report
 1. login into aws account
 1. search for S3
-1. create a bucket with unique name
+1. create a bucket with a unique name
 
 ### Stage-06: DockerHub account creation
-If you already have dockerhub account then no need to create another
+If you already have a dockerhub account then no need to create another
 1. go to dockerhub official website
 1. click on sign up
-1. fill the details and sing up
+1. fill in the details and sing up
 1. login into dockerhub
 
-Note: we can create token from dockerhub to integrate jenkins but in this case I am using docker username and password.
+Note: we can create token from dockerhub to integrate jenkins but in this case, I am using docker username and password.
 
 ### Stage-07: Slack Configuration
 1.  go to this site https://slack.com/intl/en-in
-1.  sign up with google
+1.  sign up with Google
 1.  create a workspace
 1.  just give a name
 1.  you can skip add team member
@@ -356,20 +353,20 @@ Note: we can create token from dockerhub to integrate jenkins but in this case I
 1.  click on Add to Slack
 1. select channel name
 1. click on Add Jenkins CI Integration
-1.  go down  to step 3 and copy Intergration Token Credential ID and save it somewhere
-1. go down to Intergration Settings and copy the Token and save it somewhere
-1. click on save settings
+1.  go down  to step 3 and copy Integration Token Credential ID and save it somewhere
+1. go down to Integration Settings and copy the Token and save it somewhere
+1. click on Save settings
 
 
 
-## Step: 3 Store the Credentials into Vault server
-run all these commands into vault server
+## Step: 3 Store the Credentials in the Vault server
+run all these commands into the vault server
 1. enable secrets path 
 	 * `vault secrets enable -path=secrets kv`
-1. write secret into secret path
+1. write the secret into secret path
      * `vault write secrets/creds/docker username=abcd password=xyz`
 
-like wise we can store all the credentials into vault server . I have stored only docker credential
+likewise, we can store all the credentials in the vault server. I have stored only the docker credential
 but you can store all your credential like this.
 
 1. create a jenkins policy file with vi or nano ` jenkins-policy.hcl`
@@ -378,9 +375,9 @@ path "secrets/creds/*" {
  capabilities = ["read"]
 }
 ```
-policy is created with * means vault server can read credential from every path. No need to create policies for each path like `secrets/creds/docker` , `secrets/creds/slack` etc…
+the policy is created with * means the vault server can read credentials from every path. No need to create policies for each path like `secrets/creds/docker` , `secrets/creds/slack` etc…
 
-1. run this commands to create policy
+1. run this command to create a policy
 * `vault policy write jenkins jenkins-policy.hcl`
  
  
