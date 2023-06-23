@@ -760,8 +760,10 @@ stage('Commit & Push') {
 ```
 
 ## Stage: 12 Create Pull Request
-The reason to create a pull request is that argocd is sync automatically with Git Hub. GitHub is the only single source of truth for argocd. So if jenkins push the changes to the main branch then argocd will deploy changes directly without reviewing the changes. This should not happen in the Production environment. That’s why we create pull requests against the main branch. So a senior person from the team can review the changes and merge them into the main branch. Then n then only changes should go to the production environment. 
-1. 
+`The reason to create a pull request is that argocd is sync automatically with Git Hub. GitHub is the only single source of truth for argocd. So if jenkins push the changes to the main branch then argocd will deploy changes directly without reviewing the changes. This should not happen in the Production environment. That’s why we create pull requests against the main branch. So a senior person from the team can review the changes and merge them into the main branch. Then n then only changes should go to the production environment.`
+
+Here `token.txt` contain the GitHub token, the reason for storing the GitHub token in the text file bcoz `gh auth login --with-token` accept only STDIN Input 
+ 
 ```sh
 stage('Raise PR') {
             steps {
