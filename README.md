@@ -147,9 +147,7 @@ sudo apt-get install terraform
 ```sh
     docker run -d -p 9000:9000 --name sonarqube sonarqube  
 ```
-![](https://github.com/praveensirvi1212/DevSecOps-project/blob/main/Images/sonarqube.jpeg) 
 
-   ``` 
 #### Install the Hashicorp Vault server 
 HashiCorp Vault is a secret-management tool specifically designed to control access to sensitive credentials in a low-trust environment.
 1. Installation vault using these commands
