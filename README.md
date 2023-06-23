@@ -244,7 +244,7 @@ Password: prom-operator
 
 I am assuming that your Vault server is installed and  running 
 * open the ` /etc/vault.d/vault.hcl` file with vi or nano
-* replace all the content of this file with with
+* replace all the content of this file with this
 ```
 storage "raft" {
   path    = "/opt/vault/data"
@@ -322,7 +322,7 @@ vault write -f auth/approle/role/jenkins-role/secret-id
 1. select the project type, in this case, I used Maven
 1. copy the whole command and save it somewhere
 
-##### Create Quality Gate and webhook
+##### Create Quality Gate 
 1.  Click on Quality Gates
 1.  create a new Quality Gate according to your conditions
 1.  click on Projects > click on all > select your project
