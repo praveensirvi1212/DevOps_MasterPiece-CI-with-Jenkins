@@ -802,15 +802,16 @@ sendSlackNotification function
  ```sh
 def sendSlackNotifcation()
 {
-if ( currentBuild.currentResult == "SUCCESS" ) {
-buildSummary = "Job_name: ${env.JOB_NAME}\n Build_id: ${env.BUILD_ID} \n Status: *SUCCESS*\n Build_url: ${BUILD_URL}\n Job_url: ${JOB_URL} \n"
-slackSend( channel: "#devops", token: 'slack-token', color: 'good', message: "${buildSummary}")
+    if ( currentBuild.currentResult == "SUCCESS" ) {
+        buildSummary = "Job_name: ${env.JOB_NAME}\n Build_id: ${env.BUILD_ID} \n Status: *SUCCESS*\n Build_url: ${BUILD_URL}\n Job_url: ${JOB_URL} \n"
+        slackSend( channel: "#devops", token: 'slack-token', color: 'good', message: "${buildSummary}")
+    }
+    else {
+        buildSummary = "Job_name: ${env.JOB_NAME}\n Build_id: ${env.BUILD_ID} \n Status: *FAILURE*\n Build_url: ${BUILD_URL}\n Job_url: ${JOB_URL}\n  \n "
+        slackSend( channel: "#devops", token: 'slack-token', color : "danger", message: "${buildSummary}")
+    }
 }
-else {
-buildSummary = "Job_name: ${env.JOB_NAME}\n Build_id: ${env.BUILD_ID} \n Status: *FAILURE*\n Build_url: ${BUILD_URL}\n Job_url: ${JOB_URL}\n \n "
-slackSend( channel: "#devops", token: 'slack-token', color : "danger", message: "${buildSummary}")
-}
-}
+
  ```
 #### Find the whole pipeline here
  https://github.com/praveensirvi1212/DevOps_MasterPiece-CI-with-Jenkins/blob/main/Jenkinsfile
@@ -819,7 +820,7 @@ slackSend( channel: "#devops", token: 'slack-token', color : "danger", message: 
 
 # Final outputs of this Project
 ### Jenkins Output : 
-After 86th  Build my  jenkins pipeline became successful. 
+Sorry, I forgot to change the stage name while build the job 
 ![](https://github.com/praveensirvi1212/DevOps_MasterPiece-CI-with-Jenkins/blob/main/images/jenkins.png)
 
 ### Sonarqube Output: 
