@@ -187,7 +187,7 @@ Install Slack from the official website of Slack https://slack.com/intl/en-in/do
 ### Stage-08: EKS Cluster Creation using Terraform
 To create EKS Cluster using Terraform, I have put the Terraform code here - https://github.com/praveensirvi1212/medicure-project/tree/master/eks_module
 
-*`Suggestion – create eks cluster after successful configuration of jenkins server. When jenkins is able to create pull request in the manifest repo.` 
+`Suggestion – create eks cluster after successful configuration of jenkins server. When jenkins is able to create pull request in the manifest repo.` 
 
 
 
