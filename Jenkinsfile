@@ -82,7 +82,7 @@ pipeline {
             }
         }
 
-        stage('Image Scan') {
+        stage('Docker Image Scan') {
             steps {
       	        sh ' trivy image --format template --template "@/usr/local/share/trivy/templates/html.tpl" -o report.html ${IMAGE_REPO}/${NAME}:${VERSION}-${GIT_COMMIT} '
             }
@@ -96,7 +96,7 @@ pipeline {
               }
         }
         
-        stage ('Docker Build') {
+        stage ('Docker Image Push') {
             steps {
                 withVault(configuration: [skipSslVerification: true, timeout: 60, vaultCredentialId: 'vault-token', vaultUrl: 'http://13.232.53.209:8200'], vaultSecrets: [[path: 'secrets/creds/docker', secretValues: [[vaultKey: 'username'], [vaultKey: 'password']]]]) {
                     
@@ -108,7 +108,7 @@ pipeline {
             }
         }
         
-        stage('Clone/Pull Repo') {
+        stage('Clone/Pull k8s deployment Repo') {
             steps {
                 script {
                     if (fileExists('DevOps_MasterPiece-CD-with-argocd')) {
@@ -127,7 +127,7 @@ pipeline {
             }
         }
         
-        stage('Update Manifest') {
+        stage('Update deployment Manifest') {
             steps {
                 dir("DevOps_MasterPiece-CD-with-argocd/yamls") {
                     sh 'sed -i "s#praveensirvi.*#${IMAGE_REPO}/${NAME}:${VERSION}-${GIT_COMMIT}#g" deployment.yaml'
@@ -136,7 +136,7 @@ pipeline {
             }
         }
         
-        stage('Commit & Push') {
+        stage('Commit & Push changes to feature branch') {
             steps {
                 withCredentials([string(credentialsId: 'GITHUB_TOKEN', variable: 'GITHUB_TOKEN')]) {
                     dir("DevOps_MasterPiece-CD-with-argocd/yamls") {
