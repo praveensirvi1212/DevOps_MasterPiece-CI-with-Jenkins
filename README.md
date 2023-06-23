@@ -267,25 +267,45 @@ sudo systemctl start vault
 
 #### Commands to run to configure Vault and create AppRole
 
-```sh export VAULT_ADDR='http://127.0.0.1:8200'```
-```sh vault operator init```
+```sh 
+export VAULT_ADDR='http://127.0.0.1:8200'
+```
+```sh 
+vault operator init
+```
 	* ` copy the unseal tokens and initial root token, save it somewhere for later use `
-```sh vault operator unseal```
+```sh 
+vault operator unseal
+```
 	* `Paste the first unseal token here`
-```sh vault operator unseal```
+```sh 
+vault operator unseal
+```
 	* `Paste the second unseal token here`
-```sh vault operator unseal```
+```sh 
+vault operator unseal
+```
 	* `Paste the third unseal token here`
-```sh vault login <Initial_Root_Token>```
+```sh 
+vault login <Initial_Root_Token>
+```
    * `<Initial_Root_Token>` is found in the output of `vault operator init`
 
-```sh vault auth enable approle```
+```sh 
+vault auth enable approle
+```
   	
-```sh vault write auth/approle/role/jenkins-role token_num_uses=0 secret_id_num_uses=0 policies="jenkins"```
+```sh 
+vault write auth/approle/role/jenkins-role token_num_uses=0 secret_id_num_uses=0 policies="jenkins"
+```
 	* `This app role will use for jenkins integration` 
-```sh vault read auth/approle/role/jenkins-role/role-id```
+```sh 
+vault read auth/approle/role/jenkins-role/role-id
+```
 	* `Copy the role_id and token, and store somewhere`
-```sh vault write -f auth/approle/role/jenkins-role/secret-id```
+```sh 
+vault write -f auth/approle/role/jenkins-role/secret-id
+```
 	* `Copy the secret-id and token, store them somewhere`
 
 
