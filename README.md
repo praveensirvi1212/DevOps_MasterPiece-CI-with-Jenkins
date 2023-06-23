@@ -232,8 +232,7 @@ UserName: admin
 Password: prom-operator
 
 ```
-# Done with Installation, Now will we Configure all the tools with Jenkins
-
+# Done with Installation, Now will we Configure each the tools
 ## Step: 2 Configure Individual tool
 
 ### Stage-01 : Jenkins Configuration
@@ -399,7 +398,7 @@ Note: we can create token from dockerhub to integrate jenkins but in this case, 
 15. now create a channel - click on channels > create channel > give some name to channel > create
 16. now in message bar type `@your-app-name` and click on send icon >  click on add to channel
 
-
+# Done with Configuration of all tools, Now will we store the credentials into Vault server 
 ## Step: 3 Store the Credentials in the Vault server
 run all these commands into the vault server
 1. enable secrets path 
@@ -428,6 +427,7 @@ vault policy write jenkins jenkins-policy.hcl
 ```
  
  
+# Done with Configuration of all tools, Now will we integrate tools with jenkins
 
 ## Step: 4 Integrate all the tools into jenkins for CI
 ### Stage-01: Hashicorp Vault server integration with Jenkins
@@ -491,7 +491,9 @@ vault policy write jenkins jenkins-policy.hcl
 1. Payload URL -  http://jenkins-server-public-ip-with-port/github-webhook/
 1.  click on Add Webhook
 
-## Step: 5 Integrate ArgoCD with github and slack for CD
+# Done with the integration  of tools with jenkins, Now will we integrate tools with ArgoCD
+
+## Step: 5 Integrate ArgoCD with GitHub and Slack for CD
 ### Stage-01:  ArgoCD integration with Github ( k8s manifest repo)
 1. access the argocd UI – node public ip and node port
 1. user username as `admin`
@@ -499,28 +501,76 @@ vault policy write jenkins jenkins-policy.hcl
 ```sh
  kubectl -n argocd get secret argocd-initial-admin-secret -o yaml
 ```
-1. copy the password and decode it using
+4. copy the password and decode it using
 ```sh
 ehco “copied-password” | base64 -d
 ```
-1. copy the decoded password and login into argocd
-1.  go to User Info – update password
-1.  now go to Application
-1. click on New Application
-1. give app name
-1. chose Project Name as default
-1. SYNC Policy – Automatic
-1. enable PRUNE RESOURCES and SELF HEAL
-1. SOURCE-
-1. Repository URL – give your repo URL where you stored the k8s manifest
-1. Path – yamls
-1. DESTINATION -
-1. Cluster Url – chose default
-1. namespace- default
-1. click on create
+5. copy the decoded password and login into argocd
+6.  go to User Info – update password
+7.  now go to Application
+8. click on New Application
+9. give app name
+10. chose Project Name as default
+11. SYNC Policy – Automatic
+12. enable PRUNE RESOURCES and SELF HEAL
+13. SOURCE-
+14. Repository URL – give your repo URL where you stored the k8s manifest
+15. Path – yamls
+16. DESTINATION -
+17. Cluster Url – chose default
+18. namespace- default
+19. click on create
 
-### Stage-02:  Prometheus and Grafana Integration
-use this docs to import Dashboard into grafana
+### Stage-02:  Slack integration with ArgoCD
+1. encode your Slack token using this command ( Bot Token )
+```sh
+echo "your-slack-token" | base64
+```
+2. edit `argocd-notifications-secret` secret to add slack token
+```sh
+kubectl -n argocd edit secret argocd-notifications-secret
+```
+3. add data field after `apiVersion: v1`
+```sh
+data:
+  slack-token: xxxxx-xxxxxx-xxxxxx
+```
+4. now edit `argocd-notifications-cm` configmap
+```sh
+kubectl -n argocd edit cm argocd-notifications-cm
+```
+5. add this service for slack after `apiVersion: v1`
+```sh
+data:
+  service.slack: |
+    token: $slack-token
+    username: argocd-bot
+    icon: ":rocket:"
+  template.app-sync-succeeded-slack: "message: | \n      Application {{.app.metadata.name}}
+    is now {{.app.status.sync.status}}\n"
+  trigger.on-sync-succeeded: |
+    - when: app.status.sync.status == 'Synced'
+      send: [app-sync-succeeded-slack]
+```
+6. add slack notification annotation in application
+```sh
+kubectl -n argocd edit application your-app-name-you-created-in-argocd
+```
+7. add this annotation in metadata section like this
+```sh
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  annotations:
+    notifications.argoproj.io/subscribe.on-sync-succeeded.slack: your-slack-channel-name
+  name: argocd-demo
+  namespace: argocd
+```
+
+
+      
+### Stage-03:  Prometheus and Grafana Integration
+use this docs to import grafana Dashboard into grafana
 https://www.coachdevops.com/2022/05/how-to-setup-monitoring-on-kubernetes.html
 
 
