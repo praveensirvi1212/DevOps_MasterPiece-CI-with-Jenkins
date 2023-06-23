@@ -195,7 +195,8 @@ To create EKS Cluster using Terraform, I have put the Terraform code here - http
 I am assuming that you have already Kubernetes cluster running
 1. use these commands to install argocd
 ```sh
-kubectl create namespace argocd kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+kubectl create namespace argocd 
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 ```
 1. edit the argocd-server service to NodePort to access argocd ui
 
