@@ -89,29 +89,29 @@ Push all the web application  code files into GitHub
 #### Docker Installtion
 1. Install docker using this command 
 ```sh
-	sudo apt install docker.io
+sudo apt install docker.io
 ```
 1.  add the current user and Jenkins user into the docker group
 ```sh
- 	sudo usermod -aG docker $USER
-        sudo usermod -aG docker jenkins
+sudo usermod -aG docker $USER
+sudo usermod -aG docker jenkins
 ```
 #### Trivy Installation
 1. Insatll trivy using this commands
 ```sh 
-	sudo apt-get install wget apt-transport-https gnupg lsb-release
-	wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | sudo apt-key add -
-	echo deb https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main | sudo tee -a /etc/apt/sources.list.d/trivy.list
-	sudo apt-get update
-	sudo apt-get install trivy
+sudo apt-get install wget apt-transport-https gnupg lsb-release
+wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | sudo apt-key add -
+echo deb https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main | sudo tee -a /etc/apt/sources.list.d/trivy.list
+sudo apt-get update
+sudo apt-get install trivy
 ```
 #### AWS CLI installation
 1. install aws cli  using these commands
 ```sh 
-	sudo apt install unzip
-            curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-	unzip awscliv2.zip
-	sudo ./aws/install
+sudo apt install unzip
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
 ```
 #### Install GitHub CLI
 1. install GitHub cli using these commands
