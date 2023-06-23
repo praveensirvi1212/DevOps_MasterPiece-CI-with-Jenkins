@@ -862,6 +862,12 @@ You can apply your custom quality gate like there should be zero ( bug, Vulnerab
 ### Slack output of ArgoCD
 ![](https://github.com/praveensirvi1212/DevOps_MasterPiece-CI-with-Jenkins/blob/main/images/Screenshot%20from%202023-06-22%2023-58-34.png)
 
+### Prometheus  
+![](https://github.com/praveensirvi1212/DevOps_MasterPiece-CI-with-Jenkins/blob/main/images/Screenshot%20from%202023-06-22%2023-20-00.png)
+
+### Grafana  
+![](https://github.com/praveensirvi1212/DevOps_MasterPiece-CI-with-Jenkins/blob/main/images/Screenshot%20from%202023-06-22%2023-19-50.png)
+
 
 
 
