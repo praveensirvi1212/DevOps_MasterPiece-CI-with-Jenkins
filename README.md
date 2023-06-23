@@ -386,14 +386,18 @@ Note: we can create token from dockerhub to integrate jenkins but in this case, 
 ## Step: 3 Store the Credentials in the Vault server
 run all these commands into the vault server
 1. enable secrets path 
-	 * `vault secrets enable -path=secrets kv`
-1. write the secret into secret path
-     * `vault write secrets/creds/docker username=abcd password=xyz`
+```sh
+vault secrets enable -path=secrets kv
+```
+2. write the secret into secret path
+```sh
+vault write secrets/creds/docker username=abcd password=xyz
+```
 
 likewise, we can store all the credentials in the vault server. I have stored only the docker credential
 but you can store all your credential like this.
 
-1. create a jenkins policy file with vi or nano ` jenkins-policy.hcl`
+3. create a jenkins policy file with vi or nano ` jenkins-policy.hcl`
 ```sh
 path "secrets/creds/*" {
  capabilities = ["read"]
@@ -401,8 +405,10 @@ path "secrets/creds/*" {
 ```
 the policy is created with * means the vault server can read credentials from every path. No need to create policies for each path like `secrets/creds/docker` , `secrets/creds/slack` etc…
 
-1. run this command to create a policy
-* `vault policy write jenkins jenkins-policy.hcl`
+4. run this command to create a policy
+```sh
+vault policy write jenkins jenkins-policy.hcl
+```
  
  
 
