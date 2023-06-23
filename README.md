@@ -820,7 +820,7 @@ def sendSlackNotifcation()
 
 # Final outputs of this Project
 ### Jenkins Output : 
-Sorry, I forgot to change the stage name while building the job,but don't worry I made changes in the Jenkins file.
+Sorry, I forgot to change the stage name while building the job, but don't worry I made changes in the Jenkins file.
 
 ![](https://github.com/praveensirvi1212/DevOps_MasterPiece-CI-with-Jenkins/blob/main/images/jenkins.png)
 
@@ -856,6 +856,14 @@ You can apply your custom quality gate like there should be zero ( bug, Vulnerab
 ### Application output deployed in EKS Cluster by ArgoCD 
 ![](https://github.com/praveensirvi1212/DevOps_MasterPiece-CI-with-Jenkins/blob/main/images/Screenshot%20from%202023-06-22%2023-24-29.png)
 
-### Slack output 
-![](https://github.com/praveensirvi1212/DevSecOps-project/blob/main/Images/slackop.png) 
+### Slack output of jenkins
+![](https://github.com/praveensirvi1212/DevOps_MasterPiece-CI-with-Jenkins/blob/main/images/Screenshot%20from%202023-06-22%2023-24-05.png)
+
+### Slack output of ArgoCD
+![](https://github.com/praveensirvi1212/DevOps_MasterPiece-CI-with-Jenkins/blob/main/images/Screenshot%20from%202023-06-22%2023-58-34.png)
+
+
+
+
+
 
