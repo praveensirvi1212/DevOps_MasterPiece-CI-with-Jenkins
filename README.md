@@ -843,8 +843,12 @@ You can apply your custom quality gate like there should be zero ( bug, Vulnerab
 ### Images in DockerHub pushed by jenkins 
 ![](https://github.com/praveensirvi1212/DevOps_MasterPiece-CI-with-Jenkins/blob/main/images/dockerhub.png)
 
-### kubernetes output ( deployment and service created by jenkins) 
-![](https://github.com/praveensirvi1212/DevSecOps-project/blob/main/Images/kubernetesop.png) 
+### Image tag updated by jenkins and push changes to feature branch
+![](https://github.com/praveensirvi1212/DevOps_MasterPiece-CI-with-Jenkins/blob/main/images/Screenshot%20from%202023-06-24%2000-06-51.png) 
+
+### Pull Request created by jenkins
+![](https://github.com/praveensirvi1212/DevOps_MasterPiece-CI-with-Jenkins/blob/main/images/pr.png)
+
 
 ### Application output deployed in k8s 
 ![](https://github.com/praveensirvi1212/DevSecOps-project/blob/main/Images/spring-boot-app-op.png) 
