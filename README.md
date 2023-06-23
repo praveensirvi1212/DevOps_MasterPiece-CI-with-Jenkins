@@ -370,7 +370,7 @@ Note: we can create token from dockerhub to integrate jenkins but in this case, 
 1.  just give a name
 1.  you can skip add team member
 1.  give some name to team working ( channel name like - cicd-pipeline)
-1. now go to this site https://praveensirvi.slack.com/apps
+1. now go to this site https://slack-t8s2905.slack.com/intl/en-in/apps
 1. login into your workspace (if need)
 1. now click on Get Essential Apps
 1. search Jenkins in search bar > click on it 
