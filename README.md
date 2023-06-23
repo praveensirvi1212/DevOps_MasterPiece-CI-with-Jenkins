@@ -508,7 +508,7 @@ https://www.coachdevops.com/2022/05/how-to-setup-monitoring-on-kubernetes.html
 
 # We integrated all the tools with Jenkins, Now Create a declarative jenkins  pipeline for each stage.
 
-## Step: 3 Pipeline creation
+## Step: 5 Pipeline creation
 
 ### General Jenkins  declarative Pipeline Syntax
 
@@ -690,7 +690,7 @@ stage ('Docker Build') {
                     
                     sh "docker login -u ${username} -p ${password} "
                     sh 'docker push ${IMAGE_REPO}/${NAME}:${VERSION}-${GIT_COMMIT}'
-		    sh 'docker rmi  ${IMAGE_REPO}/${NAME}:${VERSION}-${GIT_COMMIT}'
+		    	sh 'docker rmi  ${IMAGE_REPO}/${NAME}:${VERSION}-${GIT_COMMIT}'
                     
                     
                 }
