@@ -403,7 +403,7 @@ Note: we can create token from dockerhub to integrate jenkins but in this case, 
 9. search in the search bar and select `chat:write` ,`chat:write.customize`
 10. now to up to OAuth Token for Your Workspace
 11. click on Install to workspace
-12. all your app to access your workspace
+12. allow your app to access your workspace
 13. now copy Bot user OAuth Token and save it somewhere
 14. now open slack , you will find your app in Apps
 15. now create a channel - click on channels > create channel > give some name to channel > create
