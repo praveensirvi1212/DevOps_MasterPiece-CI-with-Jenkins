@@ -190,7 +190,7 @@ To create EKS Cluster using Terraform, I have put the Terraform code here - http
 `Suggestion – create eks cluster after successful configuration of jenkins server. When jenkins is able to create pull request in the manifest repo.` 
 #### Note: I have installed the terraform in the jenkins server and configured aws cli to create eks cluster. But you can use your local system to create eks cluster . for this, you have to install Terraform and aws cli on your local system.
 
-Run this command to update or configure `.kube/config` file
+Run this command after eks cluster creation to update or configure `.kube/config` file
 ```sh
 aws eks --region your-region-name update-kubeconfig --name cluster-name
 ```
