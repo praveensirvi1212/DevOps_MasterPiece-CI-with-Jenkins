@@ -178,17 +178,22 @@ sudo docker run --name artifactory -d -p 8081:8081 -p 8082:8082 \
 	-v /jfrog/artifactory:/var/opt/jfrog/artifactory \
 	docker.bintray.io/jfrog/artifactory-oss:latest
 ```
-### Stage-05 : Install Slack
+### Stage-05 : Install Slack ( on your local system or login in google chrome)
 Slack is a workplace communication tool, “a single place for messaging, tools and files.” .
 
 Install Slack from the official website of Slack https://slack.com/intl/en-in/downloads/linux
 
 
-### Stage-08: EKS Cluster Creation using Terraform
+### Stage-08: EKS Cluster Creation using Terraform 
 To create EKS Cluster using Terraform, I have put the Terraform code here - https://github.com/praveensirvi1212/medicure-project/tree/master/eks_module
 
 `Suggestion – create eks cluster after successful configuration of jenkins server. When jenkins is able to create pull request in the manifest repo.` 
+#### Note: I have installed the terraform in the jenkins server and configured aws cli to create eks cluster. But you can use your local system to create eks cluster . for this, you have to install Terraform and aws cli on your local system.
 
+Run this command to update or configure `.kube/config` file
+```sh
+aws eks --region your-region-name update-kubeconfig --name cluster-name
+```
 
 
 ### Stage-09: Install ArgoCD in EKS 
@@ -200,7 +205,7 @@ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/st
 ```
 2. edit the argocd-server service to NodePort to access argocd ui
 
-### Stage-10: Install helm 
+### Stage-10: Install helm ( on the system from where you are creating eks cluster)
 1. use these commands to install the helm
 ```sh
 curl https://baltocdn.com/helm/signing.asc | gpg --dearmor | sudo tee /usr/share/keyrings/helm.gpg > /dev/null
@@ -209,8 +214,8 @@ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/helm.
 sudo apt-get update
 sudo apt-get install helm
 ```
-### Stage-11: Install Prometheus and Grafana
-1. use helm to install Promethus and grafana
+### Stage-11: Install Prometheus and Grafana ( from where you have installed helm)
+1. use helm to install Prometheus and grafana
 ```sh
 helm repo add stable https://charts.helm.sh/stable
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
