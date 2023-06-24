@@ -1,7 +1,7 @@
 
 # DevOps-MasterPiece
 
-In this project, I created an end-to-end CI-CD pipeline  while keeping in mind Securities Best Practices,DevSecOps principles and used all these tools *Git, GitHub, Jenkins, Maven, JUnit, SonarQube, Jfrog Artifactory, Docker, Trivy, AWS S3, Docker Hub, GitHub CLI, EKS, ArgoCD, Prometheus, Grafana, Slack and Hashicorp Vault,*  to achieve the goal.
+In this project, I created an end-to-end Production like CI-CD pipeline  while keeping in mind Securities Best Practices,DevSecOps principles and used all these tools *Git, GitHub, Jenkins, Maven, JUnit, SonarQube, Jfrog Artifactory, Docker, Trivy, AWS S3, Docker Hub, GitHub CLI, EKS, ArgoCD, Prometheus, Grafana, Slack and Hashicorp Vault,*  to achieve the goal.
 
 #### I used Jenkins for Continuous Integration and ArgoCD for Continuous Deployment.
 
