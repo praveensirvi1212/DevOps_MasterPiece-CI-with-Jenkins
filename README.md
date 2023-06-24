@@ -927,7 +927,7 @@ You can apply your custom quality gate like there should be zero ( bug, Vulnerab
 ### Image tag updated by jenkins and push changes to feature branch
 ![](https://github.com/praveensirvi1212/DevOps_MasterPiece-CI-with-Jenkins/blob/main/images/Screenshot%20from%202023-06-24%2000-06-51.png) 
 
-### Pull Request created by jenkins
+### Pull Request created by jenkins in DevOps_MasterPiece-CD-with-argocd GitHub repo
 ![](https://github.com/praveensirvi1212/DevOps_MasterPiece-CI-with-Jenkins/blob/main/images/pr.png)
 
 ### App in ArgoCD  
