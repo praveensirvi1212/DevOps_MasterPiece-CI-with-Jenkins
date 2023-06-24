@@ -381,7 +381,6 @@ Note: we can create token from dockerhub to integrate jenkins but in this case, 
 ![](https://github.com/praveensirvi1212/DevSecOps-project/blob/main/Images/slack.png)
 1. click on Add Jenkins CI Integration
 1.  go down  to step 3 and copy Integration Token Credential ID and save it somewhere
-1. go down to Integration Settings and copy the Token and save it somewhere
 1. click on Save settings
 
 ### Stage-08: Slack Configuration for ArgoCD 
