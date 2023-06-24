@@ -432,13 +432,14 @@ vault policy write jenkins jenkins-policy.hcl
 ## Step: 4 Integrate all the tools into jenkins for CI
 ### Stage-01: Hashicorp Vault server integration with Jenkins
 1. go to Jenkins>  Manage  Jenkins >Manage Credentials > system > Add credentials > Vault App Role Credentials > Paste role-id and secret-id token (we create in Vault - approle)  and save and apply.
-1. now to  Manage  Jenkins  >  configure system/system>  search for vault plugin
-1. give the URL of the vault server
-1. attach the credentials we created
-1. click on Advanced
-1. select k/v engine as 1
-1. click on skip ssl verification
-1. Apply and Save
+![](https://github.com/praveensirvi1212/DevSecOps-project/blob/main/Images/approleVault.png) 
+2. now to  Manage  Jenkins  >  configure system/system>  search for vault plugin
+3. give the URL of the vault server
+4. attach the credentials we created
+5. click on Advanced
+6. select k/v engine as 1
+7. click on skip ssl verification
+8. Apply and Save
 
 ### Stage-02: SonarQube server integration with Jenkins
 1.  go to Manage Jenkins>Manage Credentials > system > Add credentials > secret text file > paste the token we create in sonarqube and save and apply.
