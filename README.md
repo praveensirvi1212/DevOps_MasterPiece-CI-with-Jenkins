@@ -543,7 +543,7 @@ echo "your-slack-token" | base64
 ```sh
 kubectl -n argocd edit secret argocd-notifications-secret
 ```
-3. add data field after `apiVersion: v1`
+3. add data field after `apiVersion: v1`, Replace `xxxx-xxxxx-xx` with your encoded slack token
 ```sh
 data:
   slack-token: xxxxx-xxxxxx-xxxxxx
