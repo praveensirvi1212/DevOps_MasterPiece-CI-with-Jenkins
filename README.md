@@ -314,12 +314,14 @@ vault write -f auth/approle/role/jenkins-role/secret-id
 1. default username-password `admin`  and ` admin`
 ##### Project setup
 1.  create a project manually, give some name to project, project key
-1. click on setup
-1. click on other ci 
-1. give some name to the token and click on generate, save it for a later user
-1. click on global
-1. select the project type, in this case, I used Maven
-1. copy the whole command and save it somewhere
+![](https://github.com/praveensirvi1212/DevSecOps-project/blob/main/Images/sonarqubedb.png) 
+2. click on setup
+3. click on other ci 
+4. give some name to the token and click on generate, save it for a later user
+5. click on global
+6. select the project type, in this case, I used Maven
+ ![](https://github.com/praveensirvi1212/DevSecOps-project/blob/main/Images/soanr.png)  
+7. copy the whole command and save it somewhere
 
 ##### Create Quality Gate 
 1.  Click on Quality Gates
@@ -334,8 +336,9 @@ vault write -f auth/approle/role/jenkins-role/secret-id
 1. click on Configuration > click on webhooks
 1.  create a webhook > Give some name
 1. for url use `http://jenkins-server-url-with-port/sonarqube-webhook/`
-1.  in secret leave the blank
-1. click on create
+![](https://github.com/praveensirvi1212/DevSecOps-project/blob/main/Images/webhook.png)
+5. in secret leave the blank
+6. click on create
 
 ##### Note: if this webhook does not work fine, then recreate the webhook after integrating the soanrqube with jenkins
 
@@ -484,10 +487,11 @@ vault policy write jenkins jenkins-policy.hcl
 ### Stage-05:  Slack integration with Jenkins
 1.  go to Manage Jenkins>Manage Credentials > system > Add credentials > secret text file > give some name to credentials, paste the token we create in the Slack app and save and apply.
 1. now to  Manage  Jenkins  >  configure system/system>  search for Slack
-1. workspace – your workspace name ( you create after login into Slack)
-1. Credential – attach the slack token
-1. Default channel name – write the channel name we created at the time of slack installation like - #cicd-pipeline
-1. Apply and save
+ ![](https://github.com/praveensirvi1212/DevSecOps-project/blob/main/Images/slcakws.png)
+3. workspace – your workspace name ( you create after login into Slack)
+4. Credential – attach the slack token
+5. Default channel name – write the channel name we created at the time of slack installation like - #cicd-pipeline
+6. Apply and save
 
 ### Stage-06:  GitHub integration with Jenkins ( application code repo )
 1. go to GitHub  > go to application code repo > settings
