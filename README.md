@@ -324,8 +324,9 @@ vault write -f auth/approle/role/jenkins-role/secret-id
 ##### Create Quality Gate 
 1.  Click on Quality Gates
 1.  create a new Quality Gate according to your conditions
-1.  click on Projects > click on all > select your project
-1. set as default
+ ![](https://github.com/praveensirvi1212/DevSecOps-project/blob/main/Images/quality%20gate.png)
+2.  click on Projects > click on all > select your project
+3. set as default
 
 ##### Create webhook
 1. click on Administration
