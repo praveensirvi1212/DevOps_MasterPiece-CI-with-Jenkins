@@ -356,9 +356,10 @@ vault write -f auth/approle/role/jenkins-role/secret-id
 ### Stage-06: DockerHub account creation
 If you already have a dockerhub account then no need to create another
 1. go to dockerhub official website
-1. click on sign up
-1. fill in the details and sing up
-1. login into dockerhub
+https://github.com/praveensirvi1212/DevSecOps-project/blob/main/Images/dockerhub.png
+2. click on sign up
+3. fill in the details and sing up
+4. login into dockerhub
 
 Note: we can create token from dockerhub to integrate jenkins but in this case, I am using docker username and password.
 
