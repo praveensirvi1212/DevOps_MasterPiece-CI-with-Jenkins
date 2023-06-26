@@ -184,7 +184,7 @@ Slack is a workplace communication tool, “a single place for messaging, tools 
 Install Slack from the official website of Slack https://slack.com/intl/en-in/downloads/linux
 
 
-### Stage-08: EKS Cluster Creation using Terraform 
+### Stage-06: EKS Cluster Creation using Terraform 
 To create EKS Cluster using Terraform, I have put the Terraform code here - https://github.com/praveensirvi1212/medicure-project/tree/master/eks_module
 
 `Suggestion – create eks cluster after successful configuration of jenkins server. When jenkins is able to create pull request in the manifest repo.` 
@@ -196,7 +196,7 @@ aws eks --region your-region-name update-kubeconfig --name cluster-name
 ```
 
 
-### Stage-09: Install ArgoCD in EKS 
+### Stage-07: Install ArgoCD in EKS 
 I am assuming that you have already Kubernetes cluster running
 1. use these commands to install argocd
 ```sh
@@ -204,8 +204,11 @@ kubectl create namespace argocd
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 ```
 2. edit the argocd-server service to NodePort to access argocd ui
+```sh
+kubectl -n argocd edit svc argocd-server
+```
 
-### Stage-10: Install helm ( on the system from where you are creating eks cluster)
+### Stage-08: Install helm ( on the system from where you are creating eks cluster)
 1. use these commands to install the helm
 ```sh
 curl https://baltocdn.com/helm/signing.asc | gpg --dearmor | sudo tee /usr/share/keyrings/helm.gpg > /dev/null
@@ -214,7 +217,7 @@ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/helm.
 sudo apt-get update
 sudo apt-get install helm
 ```
-### Stage-11: Install Prometheus and Grafana ( from where you have installed helm)
+### Stage-09: Install Prometheus and Grafana ( from where you have installed helm)
 1. use helm to install Prometheus and grafana
 ```sh
 helm repo add stable https://charts.helm.sh/stable
