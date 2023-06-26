@@ -321,15 +321,17 @@ vault write -f auth/approle/role/jenkins-role/secret-id
 1. Access the sonarqube ui using the public IP of the server and port 9000
 1. default username-password `admin`  and ` admin`
 ##### Project setup
-1.  create a project manually, give some name to project, project key
+1. chose use global setting
+![](https://github.com/praveensirvi1212/DevOps_MasterPiece-CI-with-Jenkins/blob/main/images/sonarqube-.png)
+2.  create a project manually, give some name to project, project key
 ![](https://github.com/praveensirvi1212/DevSecOps-project/blob/main/Images/sonarqubedb.png) 
-2. click on setup
-3. click on other ci 
-4. give some name to the token and click on generate, save it for a later user
-5. click on global
-6. select the project type, in this case, I used Maven
+3. click on setup
+4. click on other ci 
+5. give some name to the token and click on generate, save it for a later user
+6. click on global
+7. select the project type, in this case, I used Maven
  ![](https://github.com/praveensirvi1212/DevSecOps-project/blob/main/Images/soanr.png)  
-7. copy the whole command and save it somewhere
+8. copy the whole command and save it somewhere
 
 ##### Create Quality Gate 
 1.  Click on Quality Gates
