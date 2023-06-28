@@ -97,7 +97,7 @@ sudo usermod -aG docker $USER
 sudo usermod -aG docker jenkins
 ```
 #### Trivy Installation
-1. Insatll trivy using this commands
+1. Insatll trivy using these commands
 ```sh 
 sudo apt-get install wget apt-transport-https gnupg lsb-release
 wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | sudo apt-key add -
