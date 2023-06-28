@@ -522,7 +522,7 @@ vault policy write jenkins jenkins-policy.hcl
 ```
 4. copy the password and decode it using
 ```sh
-ehco “copied-password” | base64 -d
+echo “copied-password” | base64 -d
 ```
 5. copy the decoded password and login into argocd
 6.  go to User Info – update password
