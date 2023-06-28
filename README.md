@@ -56,6 +56,7 @@ if the docker build fails when the whole pipeline will become a failure and Jenk
 1. Docker Hub account
 1. Terraform
 1. EKS Cluster
+1. kubectl
 1. ArgoCD
 1. Helm
 1. Prometheus & Grafana
